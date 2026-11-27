@@ -29,7 +29,7 @@
       select.setAttribute("aria-label", "Выбрать неделю");
       select.innerHTML = '<option value="1">1 неделя</option><option value="2">2 неделя</option>';
       const label = $("#currentWeekLabel");
-      if (label) label.replaceWith(select);
+      if (label) label.insertAdjacentElement("afterend", select);
       else weekControls.append(select);
       select.addEventListener("change", () => {
         const current = Number($("#weekSelect").value);
