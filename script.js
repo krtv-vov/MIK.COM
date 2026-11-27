@@ -22,6 +22,8 @@ const els = {
   themeSwitch: document.getElementById("themeSwitch"),
   todayDate: document.getElementById("todayDate"),
   todayDay: document.getElementById("todayDay"),
+  clockTime: document.getElementById("clockTime"),
+  clockDate: document.getElementById("clockDate"),
   scheduleSubtitle: document.getElementById("scheduleSubtitle"),
   scheduleContainer: document.getElementById("scheduleContainer"),
   currentWeekLabel: document.getElementById("currentWeekLabel"),
@@ -44,8 +46,20 @@ function escapeHtml(value) {
   }[char]));
 }
 
-function setDateInfo() {
+function updateDateTime() {
   const now = new Date();
+  const dateOptions = {
+    weekday: "short",
+    day: "numeric",
+    month: "long"
+  };
+
+  els.clockTime.textContent = now.toLocaleTimeString("ru-RU", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  });
+  els.clockDate.textContent = now.toLocaleDateString("ru-RU", dateOptions);
   els.todayDate.textContent = now.toLocaleDateString("ru-RU", {
     day: "numeric",
     month: "long"
@@ -310,7 +324,8 @@ function setupEvents() {
 async function boot() {
   applyTheme();
   loadWallpaper();
-  setDateInfo();
+  updateDateTime();
+  window.setInterval(updateDateTime, 30000);
   setupEvents();
 
   try {

@@ -91,6 +91,50 @@ button { cursor: pointer; color: inherit; }
   margin-top: 4px;
 }
 
+/* Lightweight date and time panel: translucent color, no backdrop blur. */
+.date-time {
+  position: fixed;
+  z-index: 1000;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(16px, env(safe-area-inset-right));
+  min-width: 142px;
+  padding: 9px 15px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+  color: #fff;
+  background: rgba(18, 19, 22, .68);
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 15px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, .13);
+  pointer-events: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.clock-time {
+  font-size: 27px;
+  line-height: 1.05;
+  font-weight: 650;
+  letter-spacing: -.045em;
+}
+
+.clock-date {
+  color: rgba(255, 255, 255, .72);
+  font-size: 11px;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.light .date-time {
+  color: #17181a;
+  background: rgba(255, 255, 255, .78);
+  border-color: rgba(0, 0, 0, .09);
+  box-shadow: 0 5px 18px rgba(0, 0, 0, .07);
+}
+
+.light .clock-date { color: rgba(0, 0, 0, .58); }
+
 .menu-button {
   position: fixed;
   top: max(16px, env(safe-area-inset-top));
@@ -369,4 +413,27 @@ button { cursor: pointer; color: inherit; }
   .lesson { gap: 10px; }
   .classroom { padding: 6px 9px; }
   .side-panel { width: min(330px, 90vw); }
+
+  .date-time {
+    top: max(13px, env(safe-area-inset-top));
+    right: max(12px, env(safe-area-inset-right));
+    min-width: 116px;
+    padding: 7px 10px 8px;
+    border-radius: 12px;
+  }
+  .clock-time { font-size: 22px; }
+  .clock-date { font-size: 10px; }
+  .menu-button {
+    top: max(13px, env(safe-area-inset-top));
+    left: max(12px, env(safe-area-inset-left));
+    width: 42px;
+    height: 38px;
+  }
+  .container { padding-top: 72px; }
+}
+
+@media (max-width: 350px) {
+  .date-time { min-width: 108px; right: 10px; }
+  .clock-time { font-size: 20px; }
+  .clock-date { font-size: 9px; }
 }
