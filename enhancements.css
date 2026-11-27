@@ -1,0 +1,129 @@
+/* Дополнительные функции MIK.COM. Без тяжёлых фильтров и постоянных анимаций. */
+.date-time {
+  position: static;
+  width: fit-content;
+  min-width: 0;
+  margin: 0 0 16px auto;
+  padding: 7px 12px;
+  pointer-events: none;
+}
+.clock-time { font-size: 22px; }
+.clock-date { font-size: 10px; }
+
+.today-overview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 0 0 16px;
+  padding: 15px 17px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+.today-overview small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  margin-bottom: 4px;
+}
+.today-overview strong { display: block; font-size: 15px; }
+.today-overview p { color: var(--muted); font-size: 12px; margin-top: 3px; }
+.today-mark {
+  flex: 0 0 auto;
+  border-radius: 99px;
+  padding: 6px 9px;
+  background: var(--card2);
+  font-size: 10px;
+  font-weight: 800;
+}
+.day-card.today-card {
+  border-color: rgba(255,255,255,.55);
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.today-card .day-header::after {
+  content: "СЕГОДНЯ";
+  float: right;
+  font-size: 9px;
+  letter-spacing: .1em;
+  opacity: .65;
+  padding: 3px 7px;
+  border-radius: 99px;
+  background: var(--card2);
+}
+.week-select {
+  max-width: 112px;
+  color: inherit;
+  background: var(--card2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 7px 8px;
+  font: inherit;
+  font-weight: 750;
+}
+.quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+.quick-actions button {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card2);
+  color: inherit;
+  padding: 9px 12px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.connection-status {
+  color: var(--muted);
+  font-size: 11px;
+  margin: 0 0 12px;
+}
+.connection-status.offline { color: #e5a45b; }
+.classic-mode .today-overview,
+.classic-mode .quick-actions,
+.classic-mode .connection-status,
+.classic-mode .week-select { display: none !important; }
+.classic-mode .date-time {
+  position: fixed;
+  z-index: 1000;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(16px, env(safe-area-inset-right));
+  min-width: 142px;
+  margin: 0;
+  padding: 9px 15px 10px;
+  background: rgba(18,19,22,.68);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 15px;
+  box-shadow: 0 5px 18px rgba(0,0,0,.13);
+  align-items: flex-end;
+}
+.classic-mode .clock-time { font-size: 27px; }
+.classic-mode .clock-date { font-size: 11px; }
+.light.classic-mode .date-time {
+  color: #17181a;
+  background: rgba(255,255,255,.78);
+  border-color: rgba(0,0,0,.09);
+}
+@media (max-width: 600px) {
+  .date-time { margin-bottom: 12px; padding: 6px 10px; }
+  .clock-time { font-size: 20px; }
+  .today-overview { padding: 13px; }
+  .week-controls { gap: 6px; }
+  .week-select { max-width: 92px; font-size: 12px; }
+  .classic-mode .date-time {
+    top: max(13px, env(safe-area-inset-top));
+    right: max(12px, env(safe-area-inset-right));
+    min-width: 116px;
+    padding: 7px 10px 8px;
+  }
+  .classic-mode .clock-time { font-size: 22px; }
+  .classic-mode .clock-date { font-size: 10px; }
+}
+body:not(.classic-mode) .week-controls #currentWeekLabel { display: none; }

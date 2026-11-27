@@ -6,7 +6,11 @@
   <meta name="theme-color" content="#111111">
   <meta name="description" content="Расписание занятий группы МИК-25">
   <title>МИК.COM — расписание</title>
+  <link rel="icon" href="icons/book-stack.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/book-stack.svg">
+  <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="enhancements.css">
 </head>
 <body class="dark">
   <button class="menu-button" id="menuBtn" aria-label="Открыть меню" aria-expanded="false">
@@ -36,6 +40,7 @@
         <span>🌙</span><span>Сменить тему</span>
         <button class="ios-switch" id="themeSwitch" role="switch" aria-label="Сменить тему" aria-checked="false"><span></span></button>
       </div>
+      <button class="menu-item" id="classicModeToggle"><span>↩</span> Вернуть прежний вид</button>
     </nav>
 
     <div class="panel-footer">Настройки сохраняются на этом устройстве.</div>
@@ -82,5 +87,6 @@
   </main>
 
   <script src="script.js"></script>
+  <script src="enhancements.js"></script>
 </body>
 </html>
