@@ -126,3 +126,4 @@
   .classic-mode .clock-time { font-size: 22px; }
   .classic-mode .clock-date { font-size: 10px; }
 }
+.week-controls #currentWeekLabel { display: none; }
